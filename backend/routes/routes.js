@@ -1,15 +1,14 @@
 import express from "express";
-import { check } from "express-validator";
-import { route } from "express/lib/application";
 
 //importamos controler.
-import {postOffer,deleteOffer} 
+import {postOffer,deleteOffer,getOffers} 
         from "../controllers/controllers.js";
 const router = express.Router()
 
 
 router.post('/', postOffer);
 router.delete('/:pid', deleteOffer);
+router.get('/', getOffers);
 
 
 

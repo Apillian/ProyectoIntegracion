@@ -1,63 +1,22 @@
 import {v4 as uuidv4} from 'uuid';
 import { validationResult } from 'express-validator';
-
+import Zona16 from '../models/zona16.js';
 import HttpError from '../models/http-error.js';
 
-const DUMMY_Zonas = [
-    {
-        idZona: '1',
-        nombreZona: 'Zona 1'
 
-        },
-        {
-            idZona: '5',
-            nombreZona: 'Zona 5'
-    
-            },
-            {
-                idZona: '16',
-                nombreZona: 'Zona 16'
-        
-                },
-
-
-        
-];
-const DUMMY_Ofertas = [
-{
-    idOferta: 'offf221',
-    idRestaurante: 'Dom',
-    restaurante: 'Dominoes',
-    fechaInicio: 23/9/2013,
-    fechaFinal: 25/10/2013,
-
-},
-
-{
-    idOferta: 'offf562',
-    idRestaurante: 'mc',
-    restaurante: 'McDonalds',
-    fechaInicio: 23/9/2013,
-    fechaFinal: 25/10/2013,
-
-}
-
-
-];
-
-const DUMMY_BLACK = [
-    {
-        idOferta: 'offf221',
-        restaurante: 'Dominoes',
-        fechaInicio: 23/9/2013,
-        fechaFinal: 25/10/2013,
-    
+export const getOffers = async (req, res, next) => {
+    let offers;
+    try {
+        offers = await Zona16.find();
+    } catch (err) {
+      const error = new HttpError(
+        'No se pudo encontrar las ofertas solicitado.',
+        500
+      );
+      return next(error);
     }
-    
-    
-    ];
-
-
+    res.json({ offers: offers.map(Zona16 => Zona16.toObject({ getters: true })) });
+  };
 
 
 //Postear una oferta
@@ -88,3 +47,4 @@ export const deleteOffer = (req, res, next) => {
     DUMMY_Ofertas = DUMMY_Ofertas.filter(p => (p.id != idOferta));
     res.status(200).json({mensaje: 'Sitio Eliminado.'})
 }
+

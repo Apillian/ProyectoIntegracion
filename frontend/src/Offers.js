@@ -1,16 +1,30 @@
 import React from 'react';
 import './Offers.css';
-import Select from 'react-select'
-import { useState } from 'react';
-import NavBar from './components/NavBar';
-import App2 from './App2';
-import {Link, NavLink} from 'react-router-dom'
-import {BrowserRouter, Routes ,Router } from 'react-router-dom';
-import { render } from 'react-dom';
+import { useEffect } from 'react';
 
 
 const Offers = () => {
     const zona = localStorage.getItem('1')
+
+
+useEffect(()=>{
+
+    //Hacer un switch para elegir que zona
+    const Getz16 = async () => {
+        try {
+
+            const res = await fetch('http://localhost:5002/api/Zona16/', {method: 'GET', mode: 'cors',
+                                                                                headers: {'Content-Type': 'application/json'}});
+            const data = await res.json();
+            console.log(data);
+
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    Getz16();
+},[])
+
     return (
 <table>
 <tbody className='ofertas'>
