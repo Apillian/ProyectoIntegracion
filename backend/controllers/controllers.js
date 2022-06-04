@@ -2,12 +2,15 @@ import {v4 as uuidv4} from 'uuid';
 import { validationResult } from 'express-validator';
 import Zona16 from '../models/zona16.js';
 import HttpError from '../models/http-error.js';
+import Zona10 from '../models/zona10.js';
+//Obtener oferta
+
 
 
 export const getOffers = async (req, res, next) => {
     let offers;
     try {
-        offers = await Zona16.find();
+        offers = await Zona10.find();
     } catch (err) {
       const error = new HttpError(
         'No se pudo encontrar las ofertas solicitado.',
@@ -15,7 +18,7 @@ export const getOffers = async (req, res, next) => {
       );
       return next(error);
     }
-    res.json({ offers: offers.map(Zona16 => Zona16.toObject({ getters: true })) });
+    res.status(200).send(offers);
   };
 
 
@@ -33,7 +36,6 @@ export const postOffer = async(req, res, next) => {
         const newoff = {
             idOferta: uuidv4(),
             restaurante,
-            fechaInicio,
             fechaFinal
         }
         DUMMY_Ofertas.push(newoff);

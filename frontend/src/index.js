@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import {BrowserRouter, Routes ,Router,Route, Navigate } from 'react-router-dom';
 import App2 from './App2';
-import {Link, NavLink, Outlet} from 'react-router-dom'
 
 ReactDOM.render(<React.StrictMode>
     <BrowserRouter>

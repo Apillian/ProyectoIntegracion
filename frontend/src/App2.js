@@ -4,10 +4,10 @@ import Offers from './Offers';
 export default function App2() {
 
 return (
-    <div className="ofertas">
+
+      <div className="ofertas">
       <NavBar/>
 <Offers/>
-    </div>
-
+</div>
 
 )};
