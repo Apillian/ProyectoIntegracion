@@ -32,7 +32,6 @@ const Selectable = () => {
 
 
     return (
-        //Trying on click in the app2 link
 
         
         <table className = 'tablas'>
@@ -50,7 +49,12 @@ const Selectable = () => {
 <nav>
     <Link to='/app2' className='button'
     onClick={handle}
-    >Enter</Link>
+    >Ver Ofertas de zona</Link>
+</nav>
+<nav>
+    <Link to='/Creaofer' className='button'
+    onClick={handle}
+    >Crear una Oferta</Link>
 </nav>
     </td>
     </tr>

@@ -1,0 +1,23 @@
+.title{
+    color: blue;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    background-color:aquamarine;
+}
+
+.form-control{
+    color: blue;
+    width: 10%;
+    margin-left: 300px;
+    margin-right: 10px;
+}
+
+.btn{
+    width: 10%;
+    margin-left: 300px;
+    margin-right: 10px;
+}

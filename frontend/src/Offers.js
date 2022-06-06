@@ -17,15 +17,37 @@ useEffect(()=>{
 
     const Getz = async () => {
         try {
+            console.log(localStorage.getItem('1'))
+            if(zona=="Zona 10"){
+                const res = await fetch('http://localhost:5002/api/Zona/zona10', {method: 'GET', mode: 'cors',
+                headers: {'Content-Type': 'application/json'}});
+                const data = await res.json();
+                data.forEach(element => {
+                    arei.push(element);
+                    
+                });
+                                                                            
+  }
+            if(zona=="Zona 16"){
+                const res = await fetch('http://localhost:5002/api/Zona/zona16', {method: 'GET', mode: 'cors',
+                headers: {'Content-Type': 'application/json'}});
+                const data = await res.json();
+                data.forEach(element => {
+                    arei.push(element);
+                    
+                });
+            }
 
-            const res = await fetch('http://localhost:5002/api/Zona', {method: 'GET', mode: 'cors',
-                                                                                headers: {'Content-Type': 'application/json'}});
-            const data = await res.json();
+            if(zona=="Zona 7"){
+                const res = await fetch('http://localhost:5002/api/Zona/zona7', {method: 'GET', mode: 'cors',
+                headers: {'Content-Type': 'application/json'}});
+                const data = await res.json();
+                data.forEach(element => {
+                    arei.push(element);
+                    
+                });
+            }
             
-            data.forEach(element => {
-                arei.push(element);
-                
-            });
 
            setdal(arei);
             
@@ -50,28 +72,31 @@ useEffect(()=> {
 function Helo({restaurante,tipooferta,fechadeexpiracion}) {
     return(
 <table>
-    <header>
+    <thead classname="frontofertas">
         <tr>
-          <th scope='col' className='frontofertas'>Restaurante</th>
-          <th scope='col' className='frontofertas'>Oferta</th>
-          <th scope='col' className='frontofertas'>Fecha</th>
+          <th scope='col' >Restaurante</th>
+          <th scope='col' >Oferta</th>
+          <th scope='col' >Fecha (Limite)</th>
+
         </tr>
-        </header>
+
+        </thead>
+        <tbody className="oferta">
         <tr>
-            <td className='frontofertas'>{restaurante}</td>
-            <td className='frontofertas'>{tipooferta}</td>
-            <td className='frontofertas'>{fechadeexpiracion}</td>
+            <td >{restaurante}</td>
+            <td >{tipooferta}</td>
+            <td >{fechadeexpiracion}</td>
         </tr>
+        </tbody>
         </table>
     )
 }
 console.log(dal);
-//Meter el helo en otra pagina, y exportarla para aca (offers)
 
 return (
     
-    <table className='tablita'>
-    <tbody className='ofertas'>
+    <table>
+    <tbody>
         <tr>
             <td> 
                 <table>
@@ -87,10 +112,6 @@ return (
     </table>
     </td>
         </tr>
-    
-    
-    
-    
     </tbody>
     </table>
         )

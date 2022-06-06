@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import {BrowserRouter, Routes ,Router,Route, Navigate } from 'react-router-dom';
 import App2 from './App2';
+import Creaofer from './Creaofer';
 
 ReactDOM.render(<React.StrictMode>
     <BrowserRouter>
         <Routes>
         <Route path="/" element={<App />}/>
         <Route path="/app2" element={<App2 />}/>
+        <Route path="/Creaofer" element={<Creaofer />}/>
+        
 
         </Routes>
     </BrowserRouter>
